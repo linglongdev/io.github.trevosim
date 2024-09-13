@@ -1,0 +1,49 @@
+From 14d2a6490e20b92f4751f5950ea0279ae4342743 Mon Sep 17 00:00:00 2001
+From: wjyrich <1071633242@qq.com>
+Date: Sat, 7 Sep 2024 17:10:33 +0800
+Subject: [PATCH] install
+
+---
+ resources/TREvoSim.desktop | 11 +++++++++++
+ trevosim.pro               |  8 ++++++++
+ 2 files changed, 19 insertions(+)
+ create mode 100644 resources/TREvoSim.desktop
+
+diff --git a/resources/TREvoSim.desktop b/resources/TREvoSim.desktop
+new file mode 100644
+index 0000000..9abce7f
+--- /dev/null
++++ b/resources/TREvoSim.desktop
+@@ -0,0 +1,11 @@
++[Desktop Entry]
++Categories=Accessibility;Qt;Utility;
++Exec=TREvoSim
++Name=TREvoSim
++Name[zh_CN]=TREvoSim
++Icon=TREvoSim
++StartupNotify=false
++Terminal=false
++Type=Application
++GenericName=TREvoSim
++Version=2.0
+\ No newline at end of file
+diff --git a/trevosim.pro b/trevosim.pro
+index 1b65e7d..f698c14 100644
+--- a/trevosim.pro
++++ b/trevosim.pro
+@@ -58,3 +58,11 @@ QMAKE_LFLAGS += -no-pie
+ DISTFILES += \
+     LICENSE.md \
+     .astylerc
++
++target.path = $$PREFIX/bin
++desktop.files = resources/TREvoSim.desktop
++desktop.path = $$PREFIX/share/applications/
++icons.path = $$PREFIX/share/icons/hicolor/apps/
++icons.files = resources/TREvoSim.png
++
++INSTALLS += target desktop icons
+\ No newline at end of file
+-- 
+2.43.4
+
