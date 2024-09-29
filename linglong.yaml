@@ -1,0 +1,29 @@
+version: "1"
+
+package:
+  id: io.github.trevosim
+  name: trevosim
+  version: 2.0.0.0
+  kind: app
+  description: |
+    The [Tr]ee [Evo]lutionary [Sim]ulator program
+
+command:
+  - /opt/apps/io.github.trevosim/files/bin/TREvoSim
+
+base: org.deepin.foundation/23.0.0
+runtime: org.deepin.Runtime/23.0.1
+
+sources:
+  - kind: git
+    url: https://github.com/palaeoware/trevosim.git
+    version: master
+    commit: b074e2cca177f169783aa09f50ed37ae86d12f8b
+
+build: |
+  cd /project/linglong/sources/trevosim.git
+  git apply ../../../0001-install.patch
+  cp resources/icon.png resources/TREvoSim.png
+  qmake -makefile PREFIX=${PREFIX} LIB_INSTALL_DIR=${PREFIX}/lib/${TRIPLET}
+  make -j$(nproc)
+  make install
